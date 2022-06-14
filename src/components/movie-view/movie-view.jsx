@@ -1,37 +1,50 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { Card, Button } from "react-bootstrap";
+
 class MovieView extends React.Component {
     render() {
         const { movie, onBackClick } = this.props;
 
         return (
-            <div className="movie-view">
-                <div className="movie-poster">
-                    <img src={movie.ImgPath} crossorigin="anonymous" />
-                </div>
-                <div className="movie-title">
-                    <span  className="label">Title: </span>
-                    <span  className="value">{movie.Title}</span>
-                </div>
-                <div className="movie-description">
-                    <span  className="label">Description: </span>
-                    <span  className="value">{movie.Description}</span>
-                </div>
-               
-                <button onClick={() => { onBackClick(null); }}>Back</button>
-            </div>
+      
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Img variant="top" src={movie.ImgPath} />
+                        <Card.Title>{movie.Title}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{movie.Ratings}</Card.Subtitle>
+                            <Card.Text> {movie.Description}</Card.Text>
+                            <Card.Text>ReleaseDate: {movie.ReleaseDate}</Card.Text>
+                            <Card.Text>Featured: {movie.Featured}</Card.Text>
+                            <Card.Text>Actors/Actresses: {movie.Actors}</Card.Text>
+                                <Card.Link href="#">Director</Card.Link>
+                                <Card.Link href="#">Genre</Card.Link>
+                            <Button onClick={() => onBackClick(movie)} variant="link">Back</Button>
+                </Card.Body>
+            </Card>
         );
     }
 }
 
+
 MovieView.PropTypes = {
-  movie: PropTypes.shape({
-    ImgPath: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired  
+    movie: PropTypes.shape({
+        ImgPath: PropTypes.string.isRequired,
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        ReleaseDate: PropTypes.number.isRequired,
+        Featured: PropTypes.bool,
+        Ratings: PropTypes.string.isRequired,
+        Actors: PropTypes.string.isRequired,
+        Genre: PropTypes.shape({
+            Name: PropTypes.string.isRequired
+        }),
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired
+        }),
+        }).isRequired,
+        onBackClick: PropTypes.func.isRequired
 };
 
 export default MovieView;
