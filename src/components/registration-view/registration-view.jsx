@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+import { Form, Row, Col } from "react-bootstrap";
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState("");
@@ -8,8 +11,40 @@ export function RegistrationView(props) {
     const [ email, setEmail ] = useState("");
     const [ birthdate, setBirthdate ] = useState("");
 
-    const handleRegistration = () => {
+    const [ usernameErr, setUsernameErr ] = useState("");
+    const [ passwordErr, setPasswordErr ] = useState("");
+    const [ emailErr, setEmailErr ] = useState("");
+
+// validate user inputs
+const validate = () => {
+    let isReq = true;
+    if(!username){
+     setUsernameErr('Username Required');
+     isReq = false;
+    }else if(username.length < 6){
+     setUsernameErr('Username must be 6 characters long');
+     isReq = false;
+    }
+    if(!password){
+     setPasswordErr('Password Required');
+     isReq = false;
+    }else if(password.length < 8){
+     setPasswordErr('Password must be 8 characters long');
+     isReq = false;
+    }
+    if (!email){
+     setEmailErr("Email Required");
+    } else if(email.indexOf("@") === -1) {
+     setEmailErr("Email is invalid");
+     isReq = false;
+    }
+    return isReq;
+}
+
+    const handleRegistration = (e) => {
         e.preventDefault();
+        const isReq = validate();
+        if (req) {
         axios.post(`https://glacial-shore-06302.herokuapp.com/users`, {
             Username: username,
             Password: password,
@@ -18,41 +53,83 @@ export function RegistrationView(props) {
         })
         .then(response => {
             console.log(response.data);
+            alert("Registration successful, please login!")
             window.open("/", "_self");
         })
         .catch(e => {
             console.log("Error during registration");
         });
     };
+}
 
-    return (
-        <form>
-           <label>
-               Username:
-               <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
-           </label>
-           <label>
-               Password:
-               <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-           </label>
-           <label>
-               Email:
-               <input type="email" value={email} onChange={e => setEmail(e.target.value)}/>
-           </label>
-           <label>
-               Birthdate:
-               <input type="date" value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
-           </label>
-           <button type="submit" onClick={handleRegistration}>Register</button>
-        </form>
-       );
+return (
+<Row className="mt-5">
+    <Col md={12}>
+        <h3>Sign Up</h3>
+        <p></p>
+<Form>
+  <Form.Group className="mb-3" controlId="formUsername">
+    <Form.Label>Username</Form.Label>
+    <Form.Control type="text" 
+    placeholder="Create username" 
+    value={username} onChange={e => setUsername(e.target.value)}/>
+    {values.usernameErr && <p>{values.usernameErr}</p>}
+    <Form.Text className="text-muted">
+     Usernames must be at least 6 characters
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" 
+    placeholder="Create password"
+    value={password} onChange={e => setPassword(e.target.value)}/>
+    {values.passwordErr && <p>{values.passwordErr}</p>}
+    <Form.Text className="text-muted">
+    Passwords must be at least 8 characters
+    </Form.Text>
+    </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formEmail">
+    <Form.Label>Email</Form.Label>
+    <Form.Control type="email" 
+    placeholder="Enter email address"
+    value={email} onChange={e => setEmail(e.target.value)}/>
+    {values.emailErr && <p>{values.emailErr}</p>} 
+    <Form.Text className="text-muted">
+    We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBirthdate">
+    <Form.Label>Date of Birth</Form.Label>
+    <Form.Control type="date" 
+    placeholder="DOB format XX/XX/XXXX"
+    value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
+    {values.birthdateErr && <p>{values.birthdateErr}</p>} 
+    <Form.Text className="text-muted">
+    Date of Birth is optional
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <Form.Check type="checkbox" label="By checking this box, you agree to all Flix It Up app terms and conditions." />
+  </Form.Group>
+  <Button onClick={handleRegistration} variant="primary" type="submit">
+   Register
+  </Button>
+</Form>
+</Col>
+</Row>
+);
+
 }
 
 RegistrationView.PropTypes = {
-    user: PropTypes.exact({
-        username: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        birthdate: PropTypes.number
+    register: PropTypes.exact({
+        Username: PropTypes.string.isRequired,
+        Password: PropTypes.string.isRequired,
+        Email: PropTypes.string.isRequired,
+        Birthdate: PropTypes.number
     }).isRequired
 };
