@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class MovieView extends React.Component {
     render() {
@@ -17,34 +18,20 @@ class MovieView extends React.Component {
                     <span  className="label">Description: </span>
                     <span  className="value">{movie.Description}</span>
                 </div>
-                <div className="movie-release">
-                    <span className="label">Theater Release Date: </span>
-                    <span className="value">{movie.ReleaseDate}</span>
-                </div>
-                <div className="movie-rating">
-                    <span className="label">Rating: </span>
-                    <span className="value">{movie.Rating}</span>
-                </div>
-                <div className="movie-director">
-                    <span className="label">Director: </span>
-                    <span className="value">{movie.Director}</span>
-                </div>
-                <div className="movie-genre">
-                    <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre}</span>
-                </div>
-                <div className="movie-actors">
-                    <span className="label">Actors: </span>
-                    <span className="value">{movie.Actors}</span>
-                </div>
-                <div className="movie-feature">
-                    <span className="label">Featured Movie?: </span>
-                    <span className="value">{movie.Featured}</span>
-                </div>
+               
                 <button onClick={() => { onBackClick(null); }}>Back</button>
             </div>
         );
     }
 }
+
+MovieView.PropTypes = {
+  movie: PropTypes.shape({
+    ImgPath: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired  
+};
 
 export default MovieView;
