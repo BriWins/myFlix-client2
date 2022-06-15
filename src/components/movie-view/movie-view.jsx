@@ -34,7 +34,7 @@ class MovieView extends React.Component {
 }
 
 
-MovieView.PropTypes = {
+MovieView.propTypes = {
     movie: PropTypes.shape({
         ImgPath: PropTypes.string.isRequired,
         Title: PropTypes.string.isRequired,

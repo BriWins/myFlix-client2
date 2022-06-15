@@ -131,7 +131,7 @@ return (
 
 }
 
-RegistrationView.PropTypes = {
+RegistrationView.propTypes = {
     register: PropTypes.exact({
         Username: PropTypes.string.isRequired,
         Password: PropTypes.string.isRequired,
