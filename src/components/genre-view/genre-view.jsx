@@ -5,9 +5,9 @@ import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-class DirectorView extends React.Component {
+class GenreView extends React.Component {
     render() {
-        const { director, movie, onBackClick } = this.props;
+        const { genre, movie, onBackClick } = this.props;
 
         return (
             <Container>
@@ -15,11 +15,10 @@ class DirectorView extends React.Component {
                     <Col>
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                    <Card.Title>{director.Name}</Card.Title>
-                    <Card.Text> Biography: {director.Biography}</Card.Text>
-                    <Card.Text> Date of Birth: {director.Birthdate}</Card.Text>
-                    <Card.Text> Birthplace: {director.Birthplace}</Card.Text>
-                    <Card.Text> Deathplace: {director.Deathplace}</Card.Text>
+                    <Card.Title>{genre.Name}</Card.Title>
+                    <Card.Text> Name: {genre.Name}</Card.Text>
+                    <Card.Text> Description: {genre.Description}</Card.Text>
+                  
                     <Button onClick={() => onBackClick(null)} variant="warning">Back</Button>
                 </Card.Body>
                 </Card>
@@ -27,7 +26,7 @@ class DirectorView extends React.Component {
                 
                 <Col>
                 <Card style={{ width: '18rem' }}>
-                <Card.Header as="h5">Movies from this director</Card.Header>
+                <Card.Header as="h5">Movies within this genre</Card.Header>
                 <Card.Img variant="top" src={movie.ImgPath} />
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
@@ -45,13 +44,10 @@ class DirectorView extends React.Component {
     }
 }
 
-DirectorView.propTypes = {
-    director: PropTypes.shape({
+GenreView.propTypes = {
+    genre: PropTypes.shape({
         Name: PropTypes.string.isRequired,
-        Biography: PropTypes.string.isRequired,
-        Birthdate: PropTypes.number.isRequired,
-        Birthplace: PropTypes.string.isRequired,
-        Deathplace: PropTypes.string
+        Description: PropTypes.string.isRequired,
     }),
     
     movie: PropTypes.shape({
@@ -61,4 +57,4 @@ DirectorView.propTypes = {
       })
 }
 
-export default DirectorView;
+export default GenreView;
