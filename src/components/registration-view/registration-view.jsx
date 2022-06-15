@@ -79,6 +79,7 @@ return (
     <Form.Text className="text-muted">
      Username must be at least 6 characters
     </Form.Text>
+    {usernameErr && <p>{usernameErr}</p>}
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formPassword">
@@ -92,6 +93,7 @@ return (
     <Form.Text className="text-muted">
     Password must be at least 8 characters
     </Form.Text>
+    {passwordErr && <p>{passwordErr}</p>}
     </Form.Group>
 
   <Form.Group className="mb-3" controlId="formEmail">
@@ -105,6 +107,7 @@ return (
     <Form.Text className="text-muted">
     We'll never share your email with anyone else.
     </Form.Text>
+    {emailErr && <p>{emailErr}</p>}
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBirthdate">
