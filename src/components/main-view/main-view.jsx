@@ -15,7 +15,7 @@ class MainView extends React.Component {
         super();
         this.state = {
             movies: [],
-            selectedMovie: null,
+      //      selectedMovie: null,
             user: null
         };
     }
@@ -45,17 +45,17 @@ class MainView extends React.Component {
         });
       }
     
-     setSelectedMovie(newSelectedMovie) {
-        this.setState({
-            selectedMovie: newSelectedMovie
-        });
-     }
+    //  setSelectedMovie(newSelectedMovie) {
+    //     this.setState({
+    //         selectedMovie: newSelectedMovie
+    //     });
+    //  }
 
-     onRegistration(register) {
-        this.setState({
-            register
-        });
-     }
+    //  onRegistration(register) {
+    //     this.setState({
+    //         register
+    //     });
+    //  }
 
      onLoggedIn(authData) {
         console.log(authData);
@@ -77,31 +77,30 @@ class MainView extends React.Component {
       }
 
     render() {
-        const { movies, selectedMovie, user, register } = this.state;
-
-        if (!register) return <RegistrationView onRegistration={(register) => this.onRegistration(register)} />;
+        const { movies, user } = this.state;
 
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
         if (movies.length === 0) return <div className="main-view"/>;
 
         return (
-
+          <Router>
             <Row className="main-view justify-content-md-center">
-                {selectedMovie
-                ? (
-                    <Col md={8}>
-                    <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-                    </Col>
-                )
-                : 
-                movies.map(movie => (
-                    <Col md={3}>
-                    <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => {this.setSelectedMovie(movie) }} />
-                    </Col>
-                )) 
-            }
-           </Row>
+              <Route exact path="/" render={() => {
+                return movies.map(m => (
+                  <Col md={3} key={m._id}>
+                    <MovieCard movie={m} />
+                  </Col>
+                ))
+              }} />
+
+            <Route path="/movies/:movieId" render={({ match, history }) => {
+              return <Col md={8}>
+                <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
+              </Col>
+            }} />
+            </Row>
+            </Router>
         );
     }
 }

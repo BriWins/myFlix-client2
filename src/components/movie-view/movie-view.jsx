@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 
 import { Card, Button } from "react-bootstrap";
 
+import { Link } from "react-router-dom";
+
 class MovieView extends React.Component {
     render() {
-        const { movie, onBackClick } = this.props;
+        const { movie } = this.props;
 
         return (
       
@@ -18,8 +20,12 @@ class MovieView extends React.Component {
                             <Card.Text>ReleaseDate: {movie.ReleaseDate}</Card.Text>
                             <Card.Text>Featured: {movie.Featured}</Card.Text>
                             <Card.Text>Actors/Actresses: {movie.Actors}</Card.Text>
-                                <Card.Link href="#">Director</Card.Link>
-                                <Card.Link href="#">Genre</Card.Link>
+                            <Link to={`/directors/${movie.Director.Name}`}>
+                                <Button variant="link">Director</Button>
+                            </Link>
+                            <Link to={`/genres/${movie.Genre.Name}`}>
+                                <Button variant="link">Genre</Button>
+                            </Link>
                             <Button onClick={() => onBackClick(movie)} variant="link">Back</Button>
                 </Card.Body>
             </Card>
@@ -43,8 +49,7 @@ MovieView.PropTypes = {
         Director: PropTypes.shape({
             Name: PropTypes.string.isRequired
         }),
-        }).isRequired,
-        onBackClick: PropTypes.func.isRequired
+        }).isRequired
 };
 
 export default MovieView;

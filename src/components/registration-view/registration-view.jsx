@@ -72,10 +72,12 @@ return (
     <Form.Label>Username</Form.Label>
     <Form.Control type="text" 
     placeholder="Create username" 
-    value={username} onChange={e => setUsername(e.target.value)}/>
-    {values.usernameErr && <p>{values.usernameErr}</p>}
+    value={username} 
+    onChange={e => setUsername(e.target.value)}
+    required/>
+
     <Form.Text className="text-muted">
-     Usernames must be at least 6 characters
+     Username must be at least 6 characters
     </Form.Text>
   </Form.Group>
 
@@ -83,10 +85,12 @@ return (
     <Form.Label>Password</Form.Label>
     <Form.Control type="password" 
     placeholder="Create password"
-    value={password} onChange={e => setPassword(e.target.value)}/>
-    {values.passwordErr && <p>{values.passwordErr}</p>}
+    value={password} 
+    onChange={e => setPassword(e.target.value)}
+    required/>
+   
     <Form.Text className="text-muted">
-    Passwords must be at least 8 characters
+    Password must be at least 8 characters
     </Form.Text>
     </Form.Group>
 
@@ -94,8 +98,10 @@ return (
     <Form.Label>Email</Form.Label>
     <Form.Control type="email" 
     placeholder="Enter email address"
-    value={email} onChange={e => setEmail(e.target.value)}/>
-    {values.emailErr && <p>{values.emailErr}</p>} 
+    value={email} 
+    onChange={e => setEmail(e.target.value)}
+    required/>
+
     <Form.Text className="text-muted">
     We'll never share your email with anyone else.
     </Form.Text>
@@ -106,7 +112,7 @@ return (
     <Form.Control type="date" 
     placeholder="DOB format XX/XX/XXXX"
     value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
-    {values.birthdateErr && <p>{values.birthdateErr}</p>} 
+   
     <Form.Text className="text-muted">
     Date of Birth is optional
     </Form.Text>
