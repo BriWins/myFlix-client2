@@ -5,7 +5,7 @@ import { Card, Button } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-class MovieCard extends React.Component {
+export class MovieCard extends React.Component {
     render() {
         const { movie } = this.props;
     
@@ -25,7 +25,7 @@ class MovieCard extends React.Component {
 }
 
 
-MovieCard.PropTypes = {
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     ImgPath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
@@ -33,4 +33,3 @@ MovieCard.PropTypes = {
   }).isRequired
 };
 
-export default MovieCard;
