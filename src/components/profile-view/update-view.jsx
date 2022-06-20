@@ -5,7 +5,7 @@ import axios from "axios";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 export function UpdateView(props) {
-    const { user } = props;
+    const { users } = props;
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ email, setEmail ] = useState("");
@@ -50,7 +50,7 @@ const validate = () => {
         e.preventDefault();
         const isReq = validate();
        const token = localStorage.getItem("token");
-       axios.put(`https://glacial-shore-06302.herokuapp.com/users/${user.Username}`, {
+       axios.put(`https://glacial-shore-06302.herokuapp.com/users/${users.Username}`, {
         Username: username,
         Password: password,
         Email: email,
@@ -129,10 +129,12 @@ return (
     }
     
   UpdateView.propTypes = {
-        user: PropTypes.exact({
+        users: PropTypes.exact({
             Username: PropTypes.string.isRequired,
             Password: PropTypes.string.isRequired,
             Email: PropTypes.string.isRequired,
-            Birthdate: PropTypes.number
-        }).isRequired
+            Birthdate: PropTypes.string
+        })
     };
+
+ 

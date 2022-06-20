@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
 export function LoginView(props) {
-    const [ username, setUsername ] = useState("");
+    const [ username, setusername ] = useState("");
     const [ password, setPassword ] = useState("");
 
     const handleSubmit = (e) => {
@@ -20,16 +20,18 @@ export function LoginView(props) {
             props.onLoggedIn(data);
         })
         .catch(e => {
-            console.log('no such user')
+            console.log('no such users')
         });
         };
 
     return (
-
-        <Form>
-            <Form.Group className="mb-3" controlId="formUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setUsername(e.target.value)}/>
+        <Row className="justify-content-md-center">
+            <Col md={4}>
+        <Form >
+            <h4>Welcome Back, Please Login!</h4>
+            <Form.Group className="mb-3" controlId="formusername">
+                <Form.Label>username</Form.Label>
+                <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setusername(e.target.value)}/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formPassword">
@@ -41,13 +43,16 @@ export function LoginView(props) {
                 Submit
             </Button>
         </Form>
+        </Col>
+        </Row>
     );
 }
 
 LoginView.propTypes = {
-    user: PropTypes.shape({
+    users: PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
     }),
-    onLoggedIn: PropTypes.func.isRequired
+//    onLoggedIn: PropTypes.func.isRequired
 };
+

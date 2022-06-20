@@ -4,13 +4,16 @@ import axios from "axios";
 
 import { Button, Row, Col, Container } from "react-bootstrap";
 
+import { FavoritesView } from "./favorites-view";
+import { UpdateView } from "./update-view";
+
 
 export function ProfileView(props) {
-    const [user, setUser] = useState(props.user);
+    const [users, setUser] = useState(props.users);
     const [movies, setMovies] = useState(props.movies);
     const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-    const currentUser = localStorage.getItem("user");
+    const currentUser = localStorage.getItem("users");
     const token = localStorage.getItem("token");
 
     const getUser = () => {
@@ -33,7 +36,7 @@ export function ProfileView(props) {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(() => {
-                alert(`The account ${user.Username} was successfully deleted.`)
+                alert(`The account ${users.Username} was successfully deleted.`)
                 localStorage.clear();
                 window.open("/register", "_self");
             }).
@@ -45,7 +48,7 @@ export function ProfileView(props) {
             <Row><h4>Your profile</h4></Row>
             <Row>
                 <Col className="label">Username:</Col>
-                <Col className="value">{user.Username}</Col>
+                <Col className="value">{users.Username}</Col>
             </Row>
             <Row className="mt-3">
                 <Col className="label">Password:</Col>
@@ -53,11 +56,11 @@ export function ProfileView(props) {
             </Row>
             <Row className="mt-3">
                 <Col className="label">Email:</Col>
-                <Col className="value">{user.Email}</Col>
+                <Col className="value">{users.Email}</Col>
             </Row>
             <Row className="mt-3">
                 <Col className="label">Birthday:</Col>
-                <Col className="value">{user.Birthdate}</Col>
+                <Col className="value">{users.Birthdate}</Col>
             </Row>
 
             <Row className="mt-5"><h4>Your favorite movies</h4></Row>
@@ -65,9 +68,9 @@ export function ProfileView(props) {
                 <FavoritesView movies={movies}
                     favoriteMovies={favoriteMovies}
                     currentUser={currentUser}
-                    token={token} />
+                    token={token} /> 
      
-            <UpdateView user={user} />
+             <UpdateView users={users} />
             <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>Delete profile</Button>
         </Container>
     )
@@ -79,5 +82,13 @@ ProfileView.propTypes = {
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
     }),
+    users: PropTypes.exact({
+        Username: PropTypes.string.isRequired,
+        Password: PropTypes.string.isRequired,
+        Email: PropTypes.string.isRequired,
+        Birthdate: PropTypes.string
+    }).isRequired
 }
+
+
 

@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
-export function Navbar({user}) {
+
+
+
+
+export function Navbar({users}) {
 
   const isAuth = () => {
     let accessToken = localStorage.getItem('token');
@@ -18,15 +22,16 @@ export function Navbar({user}) {
   }
 
   return (
-    <Navbar bg="light" expand="lg" className="mb-5">
+    <Navbar sticky="top" expand="lg" className="mb-5" variant="dark" >
       <Container>
+        <Navbar.Brand href="/">Flix It Up</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse>
-            <Nav className="me-auto">
+        <Navbar.Collapse id="navbar-nav">
+            <Nav className="ml-auto">
             {isAuth() &&
             <Fragment>
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
+                <Nav.Link href={`/users/${users}`}>Profile</Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Sign-out</Nav.Link>
               </Fragment>
             }
@@ -42,3 +47,4 @@ export function Navbar({user}) {
     </Navbar>
   )
 }
+

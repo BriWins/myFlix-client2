@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
-import { Form, Row, Col } from "react-bootstrap";
+
+import { Form, Row, Col, Button } from "react-bootstrap/";
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState("");
@@ -44,8 +44,8 @@ const validate = () => {
     const handleRegistration = (e) => {
         e.preventDefault();
         const isReq = validate();
-        if (req) {
-        axios.post(`https://glacial-shore-06302.herokuapp.com/users`, {
+        if (isReq) {
+        axios.post(`https://glacial-shore-06302.herokuapp.com/users/register`, {
             Username: username,
             Password: password,
             Email: email,
@@ -54,7 +54,7 @@ const validate = () => {
         .then(response => {
             console.log(response.data);
             alert("Registration successful, please login!")
-            window.open("/", "_self");
+            window.open("/login", "_self");
         })
         .catch(e => {
             console.log("Error during registration");
@@ -134,11 +134,12 @@ return (
 
 }
 
-RegistrationView.propTypes = {
-    register: PropTypes.exact({
-        Username: PropTypes.string.isRequired,
-        Password: PropTypes.string.isRequired,
-        Email: PropTypes.string.isRequired,
-        Birthdate: PropTypes.number
-    }).isRequired
-};
+// RegistrationView.propTypes = {
+//     user: PropTypes.exact({
+//         Username: PropTypes.string.isRequired,
+//         Password: PropTypes.string.isRequired,
+//         Email: PropTypes.string.isRequired,
+//         Birthdate: PropTypes.string
+//     }).isRequired
+// };
+

@@ -5,7 +5,7 @@ import { Card, Button } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-class MovieView extends React.Component {
+export class MovieView extends React.Component {
     render() {
         const { movie } = this.props;
 
@@ -39,8 +39,8 @@ MovieView.propTypes = {
         ImgPath: PropTypes.string.isRequired,
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
-        ReleaseDate: PropTypes.number.isRequired,
-        Featured: PropTypes.bool,
+        ReleaseDate: PropTypes.string.isRequired,
+        Featured: PropTypes.string,
         Ratings: PropTypes.string.isRequired,
         Actors: PropTypes.string.isRequired,
         Genre: PropTypes.shape({
@@ -52,4 +52,3 @@ MovieView.propTypes = {
         }).isRequired
 };
 
-export default MovieView;

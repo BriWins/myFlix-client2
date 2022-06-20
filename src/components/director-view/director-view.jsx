@@ -5,7 +5,7 @@ import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-class DirectorView extends React.Component {
+export class DirectorView extends React.Component {
     render() {
         const { director, movie, onBackClick } = this.props;
 
@@ -61,4 +61,3 @@ DirectorView.propTypes = {
       })
 }
 
-export default DirectorView;

@@ -1,0 +1,1 @@
+{"mappings":"AAAA;EACI;EACA;EACA;EACA;EACA","sources":["src/components/navbar/navbar.scss"],"sourcesContent":[".navbar {\r\n    width: 100vw;\r\n    height: 50px;\r\n    margin-left: -125px;\r\n    background-color: blueviolet;\r\n    color: white;\r\n    }\r\n    \r\n    "],"names":[],"version":3,"file":"index.2e68f2a5.css.map","sourceRoot":"/__parcel_source_root/"}

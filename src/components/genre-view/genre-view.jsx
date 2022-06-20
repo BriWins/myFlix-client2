@@ -5,7 +5,7 @@ import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-class GenreView extends React.Component {
+export class GenreView extends React.Component {
     render() {
         const { genre, movie, onBackClick } = this.props;
 
@@ -56,5 +56,3 @@ GenreView.propTypes = {
         Description: PropTypes.string.isRequired,
       })
 }
-
-export default GenreView;

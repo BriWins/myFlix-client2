@@ -5,7 +5,7 @@ import { Card, Button } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
-class MovieCard extends React.Component {
+export class MovieCard extends React.Component {
     render() {
         const { movie } = this.props;
     
@@ -33,4 +33,3 @@ MovieCard.propTypes = {
   }).isRequired
 };
 
-export default MovieCard;
