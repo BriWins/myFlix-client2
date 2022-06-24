@@ -5,7 +5,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 
 
 
-export function Navbar({users}) {
+export function NavBar({users}) {
 
   const isAuth = () => {
     let accessToken = localStorage.getItem('token');

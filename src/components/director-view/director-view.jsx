@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
-import { Link } from "react-router-dom";
 
 export class DirectorView extends React.Component {
     render() {
-        const { director, movie, onBackClick } = this.props;
+        const { director, onBackClick } = this.props;
 
         return (
             <Container>
@@ -24,21 +23,6 @@ export class DirectorView extends React.Component {
                 </Card.Body>
                 </Card>
                 </Col>
-                
-                <Col>
-                <Card style={{ width: '18rem' }}>
-                <Card.Header as="h5">Movies from this director</Card.Header>
-                <Card.Img variant="top" src={movie.ImgPath} />
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Description}</Card.Text>
-                    <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">Open</Button>
-                </Link>
-                </Card.Body>
-                </Card>
-                </Col>
-            
             </Row>
             </Container>
         )
@@ -53,11 +37,5 @@ DirectorView.propTypes = {
         Birthplace: PropTypes.string.isRequired,
         Deathplace: PropTypes.string
     }),
-    
-    movie: PropTypes.shape({
-        ImgPath: PropTypes.string.isRequired,
-        Title: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-      })
 }
 

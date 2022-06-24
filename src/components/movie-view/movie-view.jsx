@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ProfileView } from "../profile-view/profile-view";
 
 import { Card, Button } from "react-bootstrap";
 
@@ -7,13 +8,13 @@ import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
     render() {
-        const { movie } = this.props;
+        const { movie, onBackClick } = this.props;
 
         return (
       
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                    <Card.Img variant="top" src={movie.ImgPath} />
+                    <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
                         <Card.Title>{movie.Title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{movie.Ratings}</Card.Subtitle>
                             <Card.Text> {movie.Description}</Card.Text>
@@ -25,7 +26,7 @@ export class MovieView extends React.Component {
                             </Link>
                             <Link to={`/genres/${movie.Genre.Name}`}>
                                 <Button variant="link">Genre</Button>
-                            </Link>
+                            </Link>   
                             <Button onClick={() => onBackClick(movie)} variant="link">Back</Button>
                 </Card.Body>
             </Card>

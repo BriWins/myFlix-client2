@@ -9,8 +9,9 @@ export class MovieCard extends React.Component {
     render() {
         const { movie } = this.props;
     
+        return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={movie.ImgPath} />
+            <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
             <Card.Body>
                 <Card.Title>{movie.Title}</Card.Title>
                 <Card.Text>
@@ -21,6 +22,7 @@ export class MovieCard extends React.Component {
                 </Link>
             </Card.Body>
         </Card>  
+        );
     }
 }
 

@@ -50,7 +50,7 @@ const validate = () => {
         e.preventDefault();
         const isReq = validate();
        const token = localStorage.getItem("token");
-       axios.put(`https://glacial-shore-06302.herokuapp.com/users/${users.Username}`, {
+       axios.put(`https://glacial-shore-06302.herokuapp.com/users/user-update/${users.Username}`, {
         Username: username,
         Password: password,
         Email: email,
@@ -73,7 +73,7 @@ const validate = () => {
 
 return (
     <Container className="mt-5">
-        <Row><h4>Edit Profile</h4></Row>
+       <h4>Edit Profile</h4>
         <Row>
         <Col sm="10" md="8" lg="6">
     <Form>

@@ -30,7 +30,7 @@ export function LoginView(props) {
         <Form >
             <h4>Welcome Back, Please Login!</h4>
             <Form.Group className="mb-3" controlId="formusername">
-                <Form.Label>username</Form.Label>
+                <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setusername(e.target.value)}/>
             </Form.Group>
 

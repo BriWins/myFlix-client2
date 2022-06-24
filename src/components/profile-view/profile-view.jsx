@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -7,11 +7,11 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import { FavoritesView } from "./favorites-view";
 import { UpdateView } from "./update-view";
 
-
 export function ProfileView(props) {
     const [users, setUser] = useState(props.users);
     const [movies, setMovies] = useState(props.movies);
     const [favoriteMovies, setFavoriteMovies] = useState([]);
+    const [addFavMovie, setAddFavMovie] = useState([]);
 
     const currentUser = localStorage.getItem("users");
     const token = localStorage.getItem("token");
@@ -23,6 +23,7 @@ export function ProfileView(props) {
             .then(response => {
                 setUser(response.data);
                 setFavoriteMovies(response.data, favoriteMovies)
+                setAddFavMovie(response.data, addFavMovie);
             })
             .catch(error => console.error(error))
     }
@@ -42,6 +43,8 @@ export function ProfileView(props) {
             }).
             catch(error => console.error(error))
     }
+
+
 
     return (
         <Container>
