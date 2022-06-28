@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { Button, Row, Col, Container } from "react-bootstrap";
 
-import { FavoritesView } from "./favorites-view";
+// import { FavoritesView } from "./favorites-view";
 import { UpdateView } from "./update-view";
 
 export function ProfileView(props) {
@@ -68,10 +68,10 @@ export function ProfileView(props) {
 
             <Row className="mt-5"><h4>Your favorite movies</h4></Row>
          
-                <FavoritesView movies={movies}
+                {/* <FavoritesView movies={movies}
                     favoriteMovies={favoriteMovies}
                     currentUser={currentUser}
-                    token={token} /> 
+                    token={token} />  */}
      
              <UpdateView users={users} />
             <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>Delete profile</Button>
@@ -89,7 +89,7 @@ ProfileView.propTypes = {
         Username: PropTypes.string.isRequired,
         Password: PropTypes.string.isRequired,
         Email: PropTypes.string.isRequired,
-        Birthdate: PropTypes.string
+        Birthdate: PropTypes.number
     }).isRequired
 }
 

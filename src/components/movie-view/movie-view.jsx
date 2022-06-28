@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ProfileView } from "../profile-view/profile-view";
+import axios from "axios";
 
 import { Card, Button } from "react-bootstrap";
 
@@ -9,6 +9,47 @@ import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
     render() {
         const { movie, onBackClick } = this.props;
+
+        const addFavorite = (e, movie) => {
+            e.preventDefault();
+            const username = localStorage.getItem("users");
+            const token = localStorage.getItem("token");
+            axios.post(
+                `https://glacial-shore-06302.herokuapp.com/users/${username}/movies/${movie._id}`,
+                {},
+                {
+                  headers: { Authorization: `Bearer ${token}` },
+                }
+              )
+              .then((response) => {
+                console.log(response);
+                alert("Movie has been added to your list!");
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          };
+
+        //   const deleteFavorite = (e, movie) => {
+        //     e.preventDefault();
+        //     const username = localStorage.getItem("users");
+        //     const token = localStorage.getItem("token");
+        //     axios.delete(
+        //         `https://glacial-shore-06302.herokuapp.com/users/${username}/movies/${movie._id}`,
+        //         {},
+        //         {
+        //           headers: { Authorization: `Bearer ${token}` },
+        //         }
+        //       )
+        //       .then((response) => {
+        //         console.log(response);
+        //         alert("Movie has has been deleted from your list!");
+        //       })
+        //       .catch(function (error) {
+        //         console.log(error);
+        //       });
+        //   };
+
 
         return (
       
@@ -28,6 +69,8 @@ export class MovieView extends React.Component {
                                 <Button variant="link">Genre</Button>
                             </Link>   
                             <Button onClick={() => onBackClick(movie)} variant="link">Back</Button>
+                            <Button onClick={(e) => { addFavorite(e, movie); }}>Add to Favorites</Button>
+                            {/* <Button onClick={(e) => { deleteFavorite(e, movie); }}>Remove</Button> */}
                 </Card.Body>
             </Card>
         );
@@ -41,7 +84,7 @@ MovieView.propTypes = {
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
         ReleaseDate: PropTypes.string.isRequired,
-        Featured: PropTypes.string,
+        Featured: PropTypes.boolean,
         Ratings: PropTypes.string.isRequired,
         Actors: PropTypes.string.isRequired,
         Genre: PropTypes.shape({

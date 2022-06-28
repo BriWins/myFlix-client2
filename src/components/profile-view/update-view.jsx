@@ -59,16 +59,19 @@ const validate = () => {
     {
         headers: { Authorization: `Bearer ${token}`}
     })
-    .then(response => {
-        console.log(response.data);
-        alert("Profile was successfully updated.");
-        window.open("/users/:username", "_self")
+    .then((response) => {
+      console.log(response.data);
+      localStorage.setItem("users", response.data.Username);
+      alert("Profile was successfully updated.");
+      window.open(`/users/${response.data.Username}`, "_self");
     })
-    .catch(error => {
-        console.error(error);
-        alert("Unable to update profile.");
+    .catch((error) => {
+      console.error(error);
+      alert(error);
     });
-}
+  }
+
+
 
 
 return (

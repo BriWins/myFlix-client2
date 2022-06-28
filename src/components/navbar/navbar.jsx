@@ -23,7 +23,7 @@ export function NavBar({users}) {
 
   return (
     <Navbar sticky="top" expand="lg" className="mb-5" variant="dark" >
-      <Container>
+      <Container fluid>
         <Navbar.Brand href="/">Flix It Up</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
@@ -31,6 +31,7 @@ export function NavBar({users}) {
             {isAuth() &&
             <Fragment>
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/">Favs</Nav.Link>
                 <Nav.Link href={`/users/${users}`}>Profile</Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Sign-out</Nav.Link>
               </Fragment>

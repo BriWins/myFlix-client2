@@ -79,7 +79,7 @@ export class MainView extends React.Component {
                         );
                         if (movies.length === 0) return <div className="main-view"/>;
                         return movies.map(m => (
-                        <Col md={3} key={m._id}>
+                        <Col md={4} key={m._id}>
                           <MovieCard movie={m} />
                         </Col>   
                         ));
@@ -131,7 +131,17 @@ export class MainView extends React.Component {
                         );
                         }} 
                       />
+
                        
+                      <Route path={`/users/${users}/movies/:movieId`} render={({ match, history}) => {
+                        if (!users) return <Redirect to={`/users/${users}`}/>
+                        return (
+                        <Col md={8}>
+                        <FavoritesView/>
+                        </Col>
+                        );
+                        }} 
+                      />
                       <Route path={`/users/${users}`} render={({ match, history}) => {
                         if (!users) return <Redirect to="/"/>
                         return (

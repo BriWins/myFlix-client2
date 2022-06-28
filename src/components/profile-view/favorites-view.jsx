@@ -9,11 +9,22 @@ import { Button, Card, Col } from 'react-bootstrap';
 export function FavoritesView(props) {
   const { movies, currentUser, token } = props;
 
-  const favoriteMoviesId = movies.map(m => m._id);
+  const handleAddMovie = (favoriteMovies, movieId) => {
+    favoriteMovies = movies.map(m => m._id);
 
-  const favoriteMoviesList = movies.filter(m => {
-    return favoriteMoviesId.includes(m._id)
-  })
+    const favoriteMoviesList = movies.filter(m => {
+      return favoriteMovies.includes(m._id)
+    });
+     
+    axios.post(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(() => {
+      alert(`${movies.Title} was successfully added to your list.`)
+      window.open("/users/:username", "_self");
+    }).
+    catch(error => console.error(error))
+  }
 
   const handleMovieDelete = (movieId) => {
     axios.delete(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
