@@ -7,12 +7,11 @@ import { Button, Card, Col } from 'react-bootstrap';
 
 
 export function FavoritesView(props) {
-  const { movies, currentUser, token } = props;
+  const { movies, currentUser, token} = props;
 
-  const handleAddMovie = (favoriteMovies, movieId) => {
-    favoriteMovies = movies.map(m => m._id);
+  let favoriteMovies = () => {
 
-    const favoriteMoviesList = movies.filter(m => {
+     movies.filter(m => {
       return favoriteMovies.includes(m._id)
     });
      
@@ -39,35 +38,35 @@ export function FavoritesView(props) {
 
   return (
     <Col>
-      {favoriteMoviesList.length === 0 ? (
+      {/* {favoriteMoviesList === 0 ? (
           <p>You have no favorite movies yet.</p>
-          ) : (
-            favoriteMoviesList.map((movie) => {
-              return (
+          ) : ( */}
+            {/* favoriteMoviesList.map((movie) => { */}
+            
               <Col xs={10} sm={8} md={6} lg={4} >
                 <Card>
-                  <Link to={`/movies/${movie._id}`}>
-                    <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
+                  <Link to={`/movies/${movies._id}`}>
+                    <Card.Img crossorigin="anonymous" variant="top" src={movies.ImgPath} />
                   </Link>
                   <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Description}</Card.Text>
-                    <Link to={`/movies/${movie._id}`}>
+                    <Card.Title>{movies.Title}</Card.Title>
+                    <Card.Text>{movies.Description}</Card.Text>
+                    <Link to={`/movies/${movies._id}`}>
                       <Button className="button" variant="outline-primary" size="sm">Open</Button>
                     </Link>
                     <Button 
                     className="button ml-2" 
                     variant="outline-primary" 
-                    size="sm" onClick={()=> {handleMovieDelete(movie._id)}} >
+                    size="sm" onClick={()=> {handleMovieDelete(movies._id)}} >
                       Remove
                     </Button>
                   </Card.Body>
                 </Card>
               </Col>
-              )
-            })
-          )
-        }
+          
+            
+          
+        
     </Col>
   )
 }
