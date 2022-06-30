@@ -19,7 +19,6 @@ export class DirectorView extends React.Component {
         //      return result;
         //   };
           
-
         return (
             <Container>
                 <Row>

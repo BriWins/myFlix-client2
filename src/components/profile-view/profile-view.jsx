@@ -15,74 +15,72 @@ export function ProfileView(props) {
   const token = localStorage.getItem("token");
 
   const getUser = () => {
-    axios
-      .get(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}`, {
+    axios.get(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}`, 
+      {
         headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
+      }).then((response) => {
         setUser(response.data);
         setFavoriteMovies(response.data.Favorites);
-      })
-      .catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+    useEffect(() => {
+      getUser();
+    }, []);
 
   const handleDelete = () => {
-    axios
-      .delete(
-        `https://glacial-shore-06302.herokuapp.com/users/${currentUser}`,
+    axios.delete(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}`,
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then(() => {
+        }).then(() => {
         alert(`The account ${users.Username} was successfully deleted.`);
         localStorage.clear();
         window.open("/register", "_self");
-      })
-      .catch((error) => console.error(error));
-  };
+        }).catch((error) => console.error(error));
+    };
 
   return (
     <Container>
-      <Row>
-        <h4>Your profile</h4>
-      </Row>
-      <Row>
-        <Col className="label">Username:</Col>
-        <Col className="value">{users.Username}</Col>
-      </Row>
-      <Row className="mt-3">
-        <Col className="label">Password:</Col>
-        <Col className="value">******</Col>
-      </Row>
-      <Row className="mt-3">
-        <Col className="label">Email:</Col>
-        <Col className="value">{users.Email}</Col>
-      </Row>
-      <Row className="mt-3">
-        <Col className="label">Birthday:</Col>
-        <Col className="value">{users.Birthdate}</Col>
-      </Row>
+        <Row>
+          <h4>Your profile</h4>
+        </Row>
 
-      <Row className="mt-5">
-        <h4>Your favorite movies</h4>
-      </Row>
+        <Row>
+          <Col className="label">Username:</Col>
+          <Col className="value">{users.Username}</Col>
+        </Row>
 
-      <FavoritesView
-        movies={props.movies}
-        favoriteMovies={favoriteMovies}
-        currentUser={currentUser}
-        token={token}
-      />
+        <Row className="mt-3">
+          <Col className="label">Password:</Col>
+          <Col className="value">******</Col>
+        </Row>
 
-      <UpdateView users={users} />
-      <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>
-        Delete profile
-      </Button>
+        <Row className="mt-3">
+          <Col className="label">Email:</Col>
+          <Col className="value">{users.Email}</Col>
+        </Row>
+
+        <Row className="mt-3">
+          <Col className="label">Birthday:</Col>
+          <Col className="value">{users.Birthdate}</Col>
+        </Row>
+
+        <Row className="mt-5">
+          <h4>Your favorite movies</h4>
+        </Row>
+
+        <FavoritesView
+          movies={props.movies}
+          favoriteMovies={favoriteMovies}
+          currentUser={currentUser}
+          token={token}
+        />
+
+        <UpdateView users={users}/>
+
+        <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>
+          Delete profile
+        </Button>
     </Container>
   );
 }

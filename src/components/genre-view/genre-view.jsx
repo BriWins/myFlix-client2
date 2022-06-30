@@ -11,17 +11,16 @@ export class GenreView extends React.Component {
             <Container>
                 <Row>
                     <Col>
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>{genre.Name}</Card.Title>
-                    <Card.Text> Name: {genre.Name}</Card.Text>
-                    <Card.Text> Description: {genre.Description}</Card.Text>
-                  
-                    <Button onClick={() => onBackClick(null)} variant="warning">Back</Button>
-                </Card.Body>
-                </Card>
-                </Col>
-            </Row>
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title>Movie Genre</Card.Title>
+                            <Card.Text> Name: {genre.Name}</Card.Text>
+                            <Card.Text> Description: {genre.Description}</Card.Text>
+                            <Button onClick={() => onBackClick(null)} variant="warning">Back</Button>
+                        </Card.Body>
+                    </Card>
+                    </Col>
+                </Row>
             </Container>
         )
     }

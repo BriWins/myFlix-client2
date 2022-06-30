@@ -51,7 +51,6 @@ export class MainView extends React.Component {
           headers: { Authorization: `Bearer ${token}`}
         })
         .then(response => {
-          // Assign the result to the state
           this.setState({
             movies: response.data
           });
@@ -87,7 +86,7 @@ export class MainView extends React.Component {
                       />
         
                       <Route path="/register" render={() => {
-                        if (users) return <Redirect to="/" />    /* (!users) */
+                        if (users) return <Redirect to="/" />    
                         return (
                         <Col lg={8} md={8}>
                           <RegistrationView/>
@@ -132,7 +131,6 @@ export class MainView extends React.Component {
                         }} 
                       />
 
-                       
                       <Route path={`/users/${users}/movies/:movieId`} render={({ match, history}) => {
                         if (!users) return <Redirect to={`/users/${users}`}/>
                         return (
@@ -142,6 +140,7 @@ export class MainView extends React.Component {
                         );
                         }} 
                       />
+
                       <Route path={`/users/${users}`} render={({ match, history}) => {
                         if (!users) return <Redirect to="/"/>
                         return (
@@ -171,7 +170,7 @@ export class MainView extends React.Component {
                         );
                         }} 
                       />
-        
+                      
                     </Row>
               </div>
           </Router>
