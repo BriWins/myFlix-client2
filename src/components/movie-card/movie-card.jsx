@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./movie-card.scss";
 
 import { Card, Button, Container } from "react-bootstrap";
 
@@ -13,15 +14,15 @@ export class MovieCard extends React.Component {
     return (
 
         <Container fluid style= {{ paddingTop: "0.75rem" }}>
-            <Card  xs={12} md={4} style={{ width: '20rem' }}>
-                <div style={{ maxHeight: "30rem", overflow:"hidden" }}>
+            <Card bg="primary" class="center_card"  xs={12} md={4} style={{ width: '20rem' }} className="h-25">
+                <div style={{ maxHeight: "35rem", overflow:"hidden" }}>
                 <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
                 </div>
                 <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
+                    <Card.Title class="text">{movie.Title}</Card.Title>
                     <Card.Text>{movie.Description}</Card.Text>
-                        <Link to={`/movies/${movie._id}`}>
-                            <Button variant="link">Open</Button>
+                        <Link class="btn-link" to={`/movies/${movie._id}`}>
+                            <Button variant="secondary" size="lg">Open</Button>
                         </Link>
                 </Card.Body>
             </Card>  

@@ -10,7 +10,7 @@ export class GenreView extends React.Component {
         return (
             <Container>
                 <Row>
-                    <Col>
+                    <Col class="center-col">
                     <Card style={{ width: '18rem' }}>
                         <Card.Body>
                             <Card.Title>Movie Genre</Card.Title>

@@ -18,8 +18,8 @@ export function NavBar({users}) {
   }
 
 return (
-    <Navbar sticky="top" expand="lg" className="mb-5" variant="dark" >
-      <Container fluid>
+    <Navbar fluid="true" sticky="top" expand="lg" className="mb-5" variant="dark" >
+      <Container >
         <Navbar.Brand href="/">Flix It Up</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">

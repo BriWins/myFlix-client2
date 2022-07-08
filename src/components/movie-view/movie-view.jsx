@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import "./movie-view.scss";
 
 import { Card, Button } from "react-bootstrap";
 
@@ -9,6 +10,16 @@ import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
     render() {
         const { movie, onBackClick } = this.props;
+
+        const convertRelease = (date, ReleaseDate) => {
+            data = date.split("T")[0];
+          
+            const [year, month, day] = ReleaseDate.split("-");
+          
+            const result = [month, day, year].join("/");
+           
+             return result;
+          };
 
         const addFavorite = (e, movie) => {
             e.preventDefault();
@@ -33,12 +44,12 @@ export class MovieView extends React.Component {
         return (
       
             <Card style={{ width: '18rem' }}>
-                <Card.Body>
+                <Card.Body >
                     <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
-                        <Card.Title>{movie.Title}</Card.Title>
+                        <Card.Title class="card_movieview-title">{movie.Title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{movie.Ratings}</Card.Subtitle>
                                 <Card.Text> {movie.Description}</Card.Text>
-                                <Card.Text>ReleaseDate: {movie.ReleaseDate}</Card.Text>
+                                <Card.Text>Release Date:{this.convertRelease(movie.date, movie.date)}</Card.Text>
                                 <Card.Text>Actors/Actresses: {movie.Actors}</Card.Text>
                                     <Link to={`/directors/${movie.Director.Name}`}>
                                         <Button variant="link">Director</Button>
@@ -60,7 +71,7 @@ MovieView.propTypes = {
         ImgPath: PropTypes.string.isRequired,
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
-        ReleaseDate: PropTypes.string.isRequired,
+        ReleaseDate: PropTypes.number.isRequired,
         Ratings: PropTypes.string.isRequired,
         Actors: PropTypes.string.isRequired,
         Genre: PropTypes.shape({

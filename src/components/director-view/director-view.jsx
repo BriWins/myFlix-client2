@@ -5,20 +5,20 @@ import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 
 export class DirectorView extends React.Component {
-    render() {
-        const { director, onBackClick, } = this.props;
 
-        // const convertBirthday = (birthdate, Birthdate) => {
-        //     birthdate = birthdate.split("T")[0];
-        //     birthdate = Birthdate;
+          convertBirthday = (birthdate, Birthdate) => {
+            birthdate = birthdate.split("T")[0];
           
-        //     const [year, month, day] = birthdate.split("-");
+            const [year, month, day] = birthdate.split("-");
           
-        //     const result = [month, day, year].join("/");
+            const result = [month, day, year].join("/");
            
-        //      return result;
-        //   };
+             return result;
+          };
           
+    render() {
+        const { director, onBackClick } = this.props;
+ 
         return (
             <Container>
                 <Row>
@@ -27,9 +27,9 @@ export class DirectorView extends React.Component {
                 <Card.Body>
                     <Card.Title>{director.Name}</Card.Title>
                     <Card.Text> Biography: {director.Biography}</Card.Text>
-                    {/* <div birthdate={() => { convertBirthday()}}> */}
-                    <Card.Text> Date of Birth: {director.Birthdate}</Card.Text>
-                    {/* </div> */}
+                    
+                    <Card.Text>Date of Birth: {this.convertBirthday(director.Birthdate, director.Birthdate)}</Card.Text>
+                
                     <Card.Text> Birthplace: {director.Birthplace}</Card.Text>
                     <Card.Text> Deathplace: {director.Deathplace}</Card.Text>
                     <Button onClick={() => onBackClick(null)} variant="warning">Back</Button>

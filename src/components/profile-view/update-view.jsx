@@ -78,7 +78,7 @@ return (
     <Container className="mt-5">
        <h4>Edit Profile</h4>
         <Row>
-          <Col sm="10" md="8" lg="6">
+          <Col sm="4" md="6" lg="10">
             <Form>
               <Form.Group className="mb-3" controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
