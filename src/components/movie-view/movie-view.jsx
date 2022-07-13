@@ -11,15 +11,15 @@ export class MovieView extends React.Component {
     render() {
         const { movie, onBackClick } = this.props;
 
-        const convertRelease = (date, ReleaseDate) => {
-            data = date.split("T")[0];
+        // const convertRelease = (date, ReleaseDate) => {
+        //     data = date.split("T")[0];
           
-            const [year, month, day] = ReleaseDate.split("-");
+        //     const [year, month, day] = ReleaseDate.split("-");
           
-            const result = [month, day, year].join("/");
+        //     const result = [month, day, year].join("/");
            
-             return result;
-          };
+        //      return result;
+        //   };
 
         const addFavorite = (e, movie) => {
             e.preventDefault();

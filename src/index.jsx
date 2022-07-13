@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { legacy_createStore as createStore} from 'redux';
 import { Provider } from 'react-redux';
-import moviesApp from './reducers/reducers';
+import  moviesApp  from './reducers/reducers';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-import { MainView }  from "./components/main-view/main-view";
+import  MainView   from "./components/main-view/main-view";
 
 import { Container } from 'react-bootstrap/';
 
@@ -13,7 +13,8 @@ import "./index.scss";
 
 const store = createStore(moviesApp, devToolsEnhancer());
 
-export class MyFlixApplication extends React.Component {
+
+class MyFlixApplication extends React.Component {
 
  render() {
         return (

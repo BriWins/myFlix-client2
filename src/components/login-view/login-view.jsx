@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import { Form, Button, Row, Col } from "react-bootstrap";
 
 export function LoginView(props) {
@@ -55,4 +58,12 @@ LoginView.propTypes = {
     }),
 //    onLoggedIn: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => {
+    return {
+        users: state.users
+    };
+}
+
+export default connect(mapStateToProps, { setUser })(LoginView);
 
