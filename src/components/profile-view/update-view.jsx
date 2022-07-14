@@ -20,7 +20,6 @@ export function UpdateView(props) {
         emailErr: "",
     });
 
-    // validate user inputs
 const validate = () => {
     let isReq = true;
     if(!username){
@@ -48,85 +47,88 @@ const validate = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        const isReq = validate();
+      const isReq = validate();
        const token = localStorage.getItem("token");
-       axios.put(`https://glacial-shore-06302.herokuapp.com/users/${users.Username}`, {
-        Username: username,
-        Password: password,
-        Email: email,
-        Birthdate: birthdate
-       },
-    {
-        headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-        console.log(response.data);
-        alert("Profile was successfully updated.");
-        window.open("/users/:username", "_self")
-    })
-    .catch(error => {
-        console.error(error);
-        alert("Unable to update profile.");
-    });
-}
+          axios.put(`https://glacial-shore-06302.herokuapp.com/users/${users.Username}`, {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthdate: birthdate
+          },
+            {
+                headers: { Authorization: `Bearer ${token}`}
+            }).then((response) => {
+          console.log(response.data);
+
+          localStorage.setItem("users", response.data.Username);
+
+          alert("Profile was successfully updated.");
+
+          window.open(`/users/${response.data.Username}`, "_self");
+          }).catch((error) => {
+            console.error(error);
+            alert(error);
+          });
+      }
+
+
 
 
 return (
     <Container className="mt-5">
-        <Row><h4>Edit Profile</h4></Row>
+       <h4>Edit Profile</h4>
         <Row>
-        <Col sm="10" md="8" lg="6">
-    <Form>
-      <Form.Group className="mb-3" controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" 
-        placeholder="Username" 
-        value={username} 
-        onChange={e => setUsername(e.target.value)}
-        required/>
-        {values.usernameErr && <p>{values.usernameErr}</p>}
-      </Form.Group>
-    
-      <Form.Group className="mb-3" controlId="formPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" 
-        placeholder="Create password"
-        value={password} 
-        onChange={e => setPassword(e.target.value)}
-        required/>
-        {values.passwordErr && <p>{values.passwordErr}</p>}
-        </Form.Group>
-    
-      <Form.Group className="mb-3" controlId="formEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="email" 
-        placeholder="Enter email address"
-        value={email} 
-        onChange={e => setEmail(e.target.value)}
-        required/>
-        {values.emailErr && <p>{values.emailErr}</p>}
-      </Form.Group>
-    
-      <Form.Group className="mb-3" controlId="formBirthdate">
-        <Form.Label>Date of Birth</Form.Label>
-        <Form.Control type="date" 
-        placeholder="DOB format XX/XX/XXXX"
-        value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
-        {values.birthdateErr && <p>{values.birthdateErr}</p>}
-      </Form.Group>
-    
-    <Form.Group controlId="formButton" className="mt-3">
-      <Button onClick={handleUpdate} variant="primary" type="submit">
-      Update
-      </Button>
-      </Form.Group>
-    </Form>
-    </Col>
+          <Col sm="4" md="6" lg="10">
+            <Form>
+              <Form.Group className="mb-3" controlId="formUsername">
+                <Form.Label>Username:</Form.Label>
+                <Form.Control type="text" 
+                placeholder="Username" 
+                value={username} 
+                onChange={e => setUsername(e.target.value)}
+                required/>
+                {values.usernameErr && <p>{values.usernameErr}</p>}
+              </Form.Group>
+            
+              <Form.Group className="mb-3" controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" 
+                placeholder="Create password"
+                value={password} 
+                onChange={e => setPassword(e.target.value)}
+                required/>
+                {values.passwordErr && <p>{values.passwordErr}</p>}
+                </Form.Group>
+            
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" 
+                placeholder="Enter email address"
+                value={email} 
+                onChange={e => setEmail(e.target.value)}
+                required/>
+                {values.emailErr && <p>{values.emailErr}</p>}
+              </Form.Group>
+            
+              <Form.Group className="mb-3" controlId="formBirthdate">
+                <Form.Label>Date of Birth</Form.Label>
+                <Form.Control type="date" 
+                placeholder="DOB format XX/XX/XXXX"
+                value={birthdate} onChange={e => setBirthdate(e.target.value)}/>
+                {values.birthdateErr && <p>{values.birthdateErr}</p>}
+              </Form.Group>
+            
+              <Form.Group controlId="formButton" className="mt-3">
+              <Button onClick={handleUpdate} variant="primary" type="submit">
+              Update
+              </Button>
+              </Form.Group>
+            </Form>
+        </Col>
     </Row>
-    </Container>
-    );
-    
-    }
+  </Container>
+  );
+}
     
   UpdateView.propTypes = {
         users: PropTypes.exact({

@@ -1,29 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./movie-card.scss";
 
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
     render() {
+
         const { movie } = this.props;
     
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={movie.ImgPath} />
-            <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text>
-                {movie.Description}
-                </Card.Text>
-                <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">Open</Button>
-                </Link>
-            </Card.Body>
-        </Card>  
+    return (
+
+        <Container fluid style= {{ paddingTop: "0.75rem" }}>
+            <Card bg="primary" class="center_card"  xs={12} md={4} style={{ width: '20rem' }} className="h-25">
+                <div style={{ maxHeight: "35rem", overflow:"hidden" }}>
+                <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
+                </div>
+                <Card.Body>
+                    <Card.Title class="text">{movie.Title}</Card.Title>
+                    <Card.Text>{movie.Description}</Card.Text>
+                        <Link class="btn-link" to={`/movies/${movie._id}`}>
+                            <Button variant="secondary" size="lg">Open</Button>
+                        </Link>
+                </Card.Body>
+            </Card>  
+        </Container>
+        );
     }
 }
-
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({

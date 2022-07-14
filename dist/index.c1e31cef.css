@@ -1,0 +1,32 @@
+.card_movieview-title {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.card-body {
+  padding-left: 25%;
+}
+.text {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.center_card {
+  display: flex;
+  justify-content: center;
+}
+.navbar {
+  width: 100vw;
+  height: 50px;
+  margin-left: -125px;
+  background-color: blueviolet;
+  color: white;
+}
+/*# sourceMappingURL=index.c1e31cef.css.map */

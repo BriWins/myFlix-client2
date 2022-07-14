@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import { Form, Button, Row, Col } from "react-bootstrap";
 
 export function LoginView(props) {
@@ -10,7 +13,6 @@ export function LoginView(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-          /* Send a request to the server for authentication */
         axios.post(`https://glacial-shore-06302.herokuapp.com/login`, {
             Username: username,
             Password: password
@@ -22,28 +24,29 @@ export function LoginView(props) {
         .catch(e => {
             console.log('no such users')
         });
-        };
+    };
 
     return (
         <Row className="justify-content-md-center">
             <Col md={4}>
-        <Form >
-            <h4>Welcome Back, Please Login!</h4>
-            <Form.Group className="mb-3" controlId="formusername">
-                <Form.Label>username</Form.Label>
-                <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setusername(e.target.value)}/>
-            </Form.Group>
+                <Form >
+                    <h4>Welcome Back, Please Login!</h4>
 
-            <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
-            </Form.Group>
-            
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Submit
-            </Button>
-        </Form>
-        </Col>
+                    <Form.Group className="mb-3" controlId="formusername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setusername(e.target.value)}/>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
+                    </Form.Group>
+                    
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                        Submit
+                    </Button>
+                </Form>
+            </Col>
         </Row>
     );
 }
@@ -55,4 +58,12 @@ LoginView.propTypes = {
     }),
 //    onLoggedIn: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => {
+    return {
+        users: state.users
+    };
+}
+
+export default connect(mapStateToProps, { setUser })(LoginView);
 
