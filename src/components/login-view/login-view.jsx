@@ -20,6 +20,7 @@ export function LoginView(props) {
         .then(response => {
             const data = response.data;
             props.onLoggedIn(data);
+            window.open("/", "_self");
         })
         .catch(e => {
             console.log('no such users')
@@ -45,6 +46,7 @@ export function LoginView(props) {
                     <Button variant="primary" type="submit" onClick={handleSubmit}>
                         Submit
                     </Button>
+                    <p>Not a user?<Link to={`users/register`}>Register Here</Link></p>
                 </Form>
             </Col>
         </Row>
