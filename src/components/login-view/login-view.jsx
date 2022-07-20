@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
-import { setUser } from '../../actions/actions';
 
 import { Form, Button, Row, Col } from "react-bootstrap";
 
@@ -20,22 +18,21 @@ export function LoginView(props) {
         .then(response => {
             const data = response.data;
             props.onLoggedIn(data);
-            window.open("/", "_self");
         })
         .catch(e => {
-            console.log('no such users')
+            console.log('no such user')
         });
     };
 
     return (
         <Row className="justify-content-md-center">
-            <Col md={4}>
+            <Col md={8}>
                 <Form >
                     <h4>Welcome Back, Please Login!</h4>
 
                     <Form.Group className="mb-3" controlId="formusername">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setusername(e.target.value)}/>
+                        <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setusername(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formPassword">
@@ -46,7 +43,7 @@ export function LoginView(props) {
                     <Button variant="primary" type="submit" onClick={handleSubmit}>
                         Submit
                     </Button>
-                    <p>Not a user?<Link to={`users/register`}>Register Here</Link></p>
+                    <p>Not a user?<Link to={`users/register`}> Register Here!</Link></p>
                 </Form>
             </Col>
         </Row>
@@ -58,10 +55,6 @@ LoginView.propTypes = {
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
     }),
-//    onLoggedIn: PropTypes.func.isRequired
 };
 
-
-
-export default LoginView;
 

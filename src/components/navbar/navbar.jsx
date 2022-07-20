@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { RegistrationView } from '../registration-view/registration-view';
+import { LoginView } from '../login-view/login-view';
 
 export function NavBar({users}) {
 
@@ -31,13 +33,8 @@ return (
                   <Nav.Link href={`/users/${users}`}>Profile</Nav.Link>
                   <Nav.Link onClick={onLoggedOut}>Sign-out</Nav.Link>
               </Fragment>
-              }
-              {!isAuth() &&
-              <Fragment>
-                <Nav.Link href={'/login'}>Sign-in</Nav.Link>
-                <Nav.Link href={'/register'}>Sign-up</Nav.Link>
-              </Fragment>
-              }
+}           
+              
             </Nav>
         </Navbar.Collapse>
       </Container>
@@ -46,5 +43,5 @@ return (
 }
 
 
-export default NavBar;
+
 

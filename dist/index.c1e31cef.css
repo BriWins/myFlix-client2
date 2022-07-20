@@ -7,6 +7,29 @@
 .card-body {
   padding-left: 25%;
 }
+.col {
+  display: flex;
+  justify-content: center;
+}
+.center-col {
+  display: flex;
+  justify-content: center;
+}
+.text {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.center_card {
+  display: flex;
+  justify-content: center;
+}
 .navbar {
   width: 100vw;
   height: 50px;

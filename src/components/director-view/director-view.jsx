@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
+import "./director-view.scss";
 
 export class DirectorView extends React.Component {
 

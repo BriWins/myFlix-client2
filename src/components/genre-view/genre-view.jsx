@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import "./genre-view.scss";
 
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
