@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
-import { connect } from 'react-redux';
-import { setUser } from '../../actions/actions';
-
 export function NavBar({users}) {
 
   const isAuth = () => {
@@ -48,12 +45,6 @@ return (
   )
 }
 
-let mapStateToProps = state => {
-  return {
-      movies: state.movies,
-      users: state.users
-  };
-}
 
-export default connect(mapStateToProps, { setUser })(NavBar);
+export default NavBar;
 

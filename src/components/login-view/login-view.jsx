@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
@@ -61,11 +61,7 @@ LoginView.propTypes = {
 //    onLoggedIn: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
-    return {
-        users: state.users
-    };
-}
 
-export default connect(mapStateToProps, { setUser })(LoginView);
+
+export default LoginView;
 
