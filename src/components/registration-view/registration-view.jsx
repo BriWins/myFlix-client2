@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 import { Form, Row, Col, Button } from "react-bootstrap/";
 
@@ -51,7 +53,7 @@ const validate = () => {
               Birthdate: birthdate
           }).then(response => {
               console.log(response.data);
-              alert("Registration successful, please login!")
+              alert("Registration successful, please login!");
               window.open("/login", "_self");
           }).catch(e => {
             console.log("Error during registration");
@@ -121,6 +123,8 @@ return (
                         <Button onClick={handleRegistration} variant="primary" type="submit">
                         Register
                         </Button>
+
+                        <p>Already registered?<Link to={`/login`}>Login Here</Link></p>
                       </Form>
             </Col>
         </Row>

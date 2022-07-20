@@ -19,7 +19,6 @@ export class MovieView extends React.Component {
         //     const result = [month, day, year].join("/");
            
         //      return result;
-        //   };
 
         const addFavorite = (e, movie) => {
             e.preventDefault();
@@ -43,13 +42,13 @@ export class MovieView extends React.Component {
 
         return (
       
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '20rem' }}>
                 <Card.Body >
                     <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
                         <Card.Title class="card_movieview-title">{movie.Title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{movie.Ratings}</Card.Subtitle>
                                 <Card.Text> {movie.Description}</Card.Text>
-                                <Card.Text>Release Date:{this.convertRelease(movie.date, movie.date)}</Card.Text>
+                                <Card.Text>Release Date: {movie.ReleaseDate}</Card.Text>
                                 <Card.Text>Actors/Actresses: {movie.Actors}</Card.Text>
                                     <Link to={`/directors/${movie.Director.Name}`}>
                                         <Button variant="link">Director</Button>

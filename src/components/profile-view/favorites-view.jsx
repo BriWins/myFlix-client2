@@ -21,7 +21,7 @@ const handleMovieDelete = (movieId) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       ).then(() => { alert(`${movies.Title} was successfully deleted from your list.`);
-      window.open("/users/:username", "_self");
+      window.open(`/users/:username`, `_self`);
       }).catch((error) => console.error(error));
   };
 
