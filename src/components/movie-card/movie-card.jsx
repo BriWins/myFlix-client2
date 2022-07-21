@@ -14,7 +14,7 @@ export class MovieCard extends React.Component {
     return (
 
         <Container fluid style= {{ paddingTop: "0.75rem" }}>
-            <Card bg="primary" class="center_card"  xs={12} md={4} style={{ width: '20rem' }} className="h-25">
+            <Card class="center_card"  xs={12} md={4} style={{ width: '20rem' }} className="h-25">
                 <div style={{ maxHeight: "35rem", overflow:"hidden" }}>
                 <Card.Img crossorigin="anonymous" variant="top" src={movie.ImgPath} />
                 </div>
@@ -22,7 +22,7 @@ export class MovieCard extends React.Component {
                     <Card.Title class="text">{movie.Title}</Card.Title>
                     <Card.Text>{movie.Description}</Card.Text>
                         <Link class="btn-link" to={`/movies/${movie._id}`}>
-                            <Button variant="secondary" size="lg">Open</Button>
+                            <Button variant="secondary" size="sm">Open</Button>
                         </Link>
                 </Card.Body>
             </Card>  

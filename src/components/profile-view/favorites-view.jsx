@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./favorites-view.scss";
 
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 
 export function FavoritesView(props) {
  
@@ -26,15 +27,16 @@ const handleMovieDelete = (movieId) => {
   };
 
   return (
-    <Col>
+    <Container>
       {console.log(favoriteMoviesList)}
       {favoriteMoviesList === 0 ? (
         <p>You have no favorite movies yet.</p>
         ) : (
         favoriteMoviesList.map((movies) => {
           return (
-            <Col xs={10} sm={8} md={6} lg={4}>
+            <Row xs={10} sm={8} md={6} lg={4}>
               {console.log(movies)}
+            
               <Card>
                   <Link to={`/movies/${movies._id}`}>
                     <Card.Img
@@ -67,11 +69,12 @@ const handleMovieDelete = (movieId) => {
 
                     </Card.Body>
               </Card>
-            </Col>
+              </Row>
+           
           );
         })
       )}
-    </Col>
+ </Container>
   );
 }
 

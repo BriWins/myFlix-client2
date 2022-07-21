@@ -5,7 +5,7 @@ import axios from "axios";
 import { UpdateView } from "./update-view";
 import { FavoritesView } from "./favorites-view";
 
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Button, Row, Col, Container, Form } from "react-bootstrap";
 
 export function ProfileView(props) {
   const [users, setUser] = useState(props.users);
@@ -40,33 +40,17 @@ export function ProfileView(props) {
     };
 
   return (
-    <Container> 
-       <Row>
-        <Col>
-          <h4>Your profile</h4>
+ 
+      <Container>
+        
        
-          <Row className="mt-3">
-          <Col className="label">Username:</Col>
-          <Col className="value">{users.username}</Col>
-          </Row>
+        <UpdateView users={users}/>
+        <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>
+            Delete profile
+          </Button>
 
-          
-          <Row className="mt-3">
-          <Col className="label">Password:</Col>
-          <Col className="value">******</Col>
-          </Row>
-
-          
-          <Row className="mt-3">
-           <Col className="label">Email:</Col>
-          <Col className="value">{users.Email}</Col>
-          </Row>
-
-          <Row className="mt-3">
-          <Col className="label">Birthday:</Col>
-          <Col className="value">{users.Birthdate}</Col>
-          </Row>
-   
+  
+         
           <h4>Your favorite movies</h4>
           <FavoritesView
             movies={props.movies}
@@ -74,16 +58,12 @@ export function ProfileView(props) {
             currentUser={currentUser}
             token={token}
           />
-        </Col>
-
-        <Col>
-          <UpdateView users={users}/>
-          <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>
-            Delete profile
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+        
+        </Container>
+         
+        
+    
+    
   );
 }
 

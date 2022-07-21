@@ -94,15 +94,7 @@ export class MainView extends React.Component {
             }}
 
             />
-            <Route path="/" render={() => {
-              if (!users) return 
-              return (
-                <Col md={4} key={m._id}>
-                <MovieCard movie={m} />
-              </Col>
-              );
-            }}
-            />
+        
 
             <Route path="/movies/:id" render={({ match, history }) => {
               return (
