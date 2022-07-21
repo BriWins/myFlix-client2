@@ -59,8 +59,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-
-    let { movies, users } = this.props;
+    let { movies, users } = this.state;
 
     return (
       <Router>
@@ -68,13 +67,21 @@ export class MainView extends React.Component {
           <NavBar users={users} />
           <Row className="justify-content-md-center">
             
-            <Route exact path="/login" render={() => {
-              if (!users) return (
-                <Col>
-                  <LoginView movies={movies} onLoggedIn={users => this.onLoggedIn(users)} />
-                </Col>
-              );
-            }}
+          <Route
+              exact
+              path="/"
+              render={() => {
+                if (!users)
+                  return (
+                    <Col>
+                      <LoginView onLoggedIn={(users) => this.onLoggedIn(users)} />
+                    </Col>
+                  ); return movies.map((m) => (
+                  <Col md={4} key={m._id}>
+                    <MovieCard movie={m} />
+                  </Col>
+                ));
+              }}
             />
 
             <Route path="/register" render={() => {
