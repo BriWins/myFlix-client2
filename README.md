@@ -10,9 +10,18 @@ This repository is a successor of  [Flix It Up server side component](https://gi
 
 **Primary Stakeholder:** [CAREERFOUNDRY](https://careerfoundry.com/)
 
-**CAREERFOUNDRY Tutor:** Adam Pagels
+**CAREERFOUNDRY Tutor:** [Adam Pagels](https://www.adampagels.com/)
 
 **CAREERFOUNDRY Mentor:** Alfredo Salazar Vélez
+
+## Technical Requirements
+
+- single-page application (SPA)
+- uses state routing to navigate between views and share URLs
+- uses [Parcel](https://parceljs.org/) as its build tool
+- written using the [React](https://reactjs.org/) library and in ES2015+
+- uses [Bootstrap](https://react-bootstrap.github.io/) as a UI library for styling and responsiveness
+- contain a mix of class components and function components
 
 
 ## Essential Features :rocket:
@@ -41,7 +50,7 @@ This repository is a successor of  [Flix It Up server side component](https://gi
 
 **Director View**
 
-- Returns data about a director ( name, bio, birth year, death year (if applicable))
+- Returns data about a director (name, bio, birth year, death year (if applicable))
 
 **Profile view** 
 
