@@ -10474,7 +10474,7 @@ function LoginView(props) {
                         children: [
                             "Not a user?",
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                to: `users/register`,
+                                to: `/register`,
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
                                     lineNumber: 46

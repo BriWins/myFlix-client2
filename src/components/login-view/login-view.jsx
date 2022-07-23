@@ -43,7 +43,7 @@ export function LoginView(props) {
                     <Button variant="primary" type="submit" onClick={handleSubmit}>
                         Submit
                     </Button>
-                    <p>Not a user?<Link to={`users/register`}> Register Here!</Link></p>
+                    <p>Not a user?<Link to={`/register`}> Register Here!</Link></p>
                 </Form>
             </Col>
         </Row>
