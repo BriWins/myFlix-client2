@@ -77,8 +77,8 @@ export class MainView extends React.Component {
                       <LoginView onLoggedIn={(users) => this.onLoggedIn(users)} />
                     </Col>
                   ); return movies.map((m) => (
-                  <Col md={4} key={m._id}>
-                    <MovieCard movie={m} />
+                  <Col md={4} >
+                    <MovieCard key={m._id} movie={m} />
                   </Col>
                 ));
               }}
@@ -96,10 +96,10 @@ export class MainView extends React.Component {
             />
         
 
-            <Route path="/movies/:id" render={({ match, history }) => {
+            <Route path="/movies/:movieId" render={({ match, history }) => {
               return (
                 <Col md={8}>
-                  <MovieView movie={movies.find(m => m._id === match.params.id)} onBackClick={() => history.goBack()} />
+                  <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
                 </Col>
               );
             }}
@@ -123,7 +123,7 @@ export class MainView extends React.Component {
             }}
             />
 
-            <Route path={`/users/${users}/movies/:movieId`} render={({ match, history }) => {
+            {/* <Route path={`/users/${users}/movies/:movieId`} render={({ match, history }) => {
               if (!users) return <Redirect to={`/users/${users}`} />
               return (
                 <Col md={8}>
@@ -131,7 +131,7 @@ export class MainView extends React.Component {
                 </Col>
               );
             }}
-            />
+            /> */}
 
             <Route path={`/users/${users}`} render={({ match, history }) => {
               if (!users) return <Redirect to="/" />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 import { Form, Row, Col, Button } from "react-bootstrap/";
 
 export function RegistrationView(props) {
@@ -51,8 +52,8 @@ const validate = () => {
               Birthdate: birthdate
           }).then(response => {
               console.log(response.data);
-              alert("Registration successful, please login!")
-              window.open("/login", "_self");
+              alert("Registration successful, you may now login!");
+              window.open("/","_self");
           }).catch(e => {
             console.log("Error during registration");
           });
