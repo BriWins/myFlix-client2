@@ -17,7 +17,7 @@ const { movies, currentUser, token, favoriteMovies } = props;
   });
 
 const handleMovieDelete = (movieId) => {
-    axios.delete(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}/movies/${movieId}`,
+    axios.delete(`https://stark-oasis-54313.herokuapp.com/users/${currentUser}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

@@ -15,7 +15,7 @@ export function ProfileView(props) {
   const token = localStorage.getItem("token");
 
   const getUser = () => {
-    axios.get(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}`, 
+    axios.get(`https://stark-oasis-54313.herokuapp.com/users/${currentUser}`, 
       {
         headers: { Authorization: `Bearer ${token}` },
       }).then((response) => {
@@ -29,7 +29,7 @@ export function ProfileView(props) {
     }, []);
 
   const handleDelete = () => {
-    axios.delete(`https://glacial-shore-06302.herokuapp.com/users/${currentUser}`,
+    axios.delete(`https://stark-oasis-54313.herokuapp.com/users/${currentUser}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }).then(() => {

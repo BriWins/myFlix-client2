@@ -49,7 +49,7 @@ const validate = () => {
         e.preventDefault();
       const isReq = validate();
        const token = localStorage.getItem("token");
-          axios.put(`https://glacial-shore-06302.herokuapp.com/users/${users.Username}`, {
+          axios.put(`https://stark-oasis-54313.herokuapp.com/users/${users.Username}`, {
             Username: username,
             Password: password,
             Email: email,
